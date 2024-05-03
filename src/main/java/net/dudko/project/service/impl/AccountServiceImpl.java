@@ -1,12 +1,10 @@
 package net.dudko.project.service.impl;
 
-import net.dudko.project.domain.entity.blockchain.Block;
 import net.dudko.project.domain.mapper.BlockMapper;
 import net.dudko.project.domain.repository.BlockRepository;
 import net.dudko.project.model.dto.BlockDto;
 import net.dudko.project.model.exceprion.BlockchainException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import net.dudko.project.domain.entity.account.Account;

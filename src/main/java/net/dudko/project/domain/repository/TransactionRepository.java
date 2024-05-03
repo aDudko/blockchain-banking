@@ -9,6 +9,4 @@ public interface TransactionRepository extends JpaRepository<Transaction, Long> 
 
     List<Transaction> findByAccountIdOrderByTimestampDesc(Long accountId);
 
-    Transaction findTopByOrderByIdDesc();
-
 }

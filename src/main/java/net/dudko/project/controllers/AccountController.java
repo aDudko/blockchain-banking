@@ -1,5 +1,7 @@
 package net.dudko.project.controllers;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import net.dudko.project.model.dto.AccountDto;
 import net.dudko.project.model.dto.TransactionDto;
 import net.dudko.project.model.dto.TransferFundDto;
@@ -20,6 +22,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/account")
+@Tag(name = "account", description = "API for using account")
 public class AccountController {
 
     private final AccountService accountService;
@@ -29,21 +32,25 @@ public class AccountController {
         this.accountService = accountService;
     }
 
+    @Operation(tags = "account", summary = "Create account")
     @PostMapping
     public ResponseEntity<AccountDto> createAccount(@RequestBody AccountDto accountDto) {
         return new ResponseEntity<>(accountService.createAccount(accountDto), HttpStatus.CREATED);
     }
 
+    @Operation(tags = "account", summary = "Get account by ID")
     @GetMapping("/{id}")
     public ResponseEntity<AccountDto> getAccountById(@PathVariable Long id) {
         return ResponseEntity.ok(accountService.getAccount(id));
     }
 
+    @Operation(tags = "account", summary = "Get all accounts")
     @GetMapping
     public ResponseEntity<List<AccountDto>> getAllAccounts() {
         return ResponseEntity.ok(accountService.getAllAccounts());
     }
 
+    @Operation(tags = "account", summary = "To put money into the account")
     @PutMapping("/{id}/deposit")
     public ResponseEntity<AccountDto> deposit(@PathVariable Long id,
                                               @RequestBody Map<String, Double> request) {
@@ -51,6 +58,7 @@ public class AccountController {
         return ResponseEntity.ok(accountService.deposit(id, amount));
     }
 
+    @Operation(tags = "account", summary = "Withdraw money")
     @PutMapping("/{id}/withdraw")
     public ResponseEntity<AccountDto> withdraw(@PathVariable Long id,
                                                @RequestBody Map<String, Double> request) {
@@ -58,30 +66,35 @@ public class AccountController {
         return ResponseEntity.ok(accountService.withdraw(id, amount));
     }
 
+    @Operation(tags = "account", summary = "Activate account")
     @PutMapping("/{id}/activate")
     public ResponseEntity<String> activateAccount(@PathVariable Long id) {
         accountService.activateAccount(id);
         return ResponseEntity.ok("Account is activate successfully");
     }
 
+    @Operation(tags = "account", summary = "Hold account")
     @PutMapping("/{id}/hold")
     public ResponseEntity<String> holdAccount(@PathVariable Long id) {
         accountService.holdAccount(id);
         return ResponseEntity.ok("Account is hold successfully");
     }
 
+    @Operation(tags = "account", summary = "Delete account")
     @PutMapping("/{id}/delete")
     public ResponseEntity<String> deleteAccount(@PathVariable Long id) {
         accountService.deleteAccount(id);
         return ResponseEntity.ok("Account is deleted successfully");
     }
 
+    @Operation(tags = "account", summary = "Transfer fund")
     @PostMapping("/transfer")
     public ResponseEntity<String> transferFund(@RequestBody TransferFundDto transferFundDto) {
         accountService.transferFunds(transferFundDto);
         return ResponseEntity.ok("Transfer Successful");
     }
 
+    @Operation(tags = "account", summary = "Get transactions of account")
     @GetMapping("/{id}/transactions")
     public ResponseEntity<List<TransactionDto>> getTransactions(@PathVariable Long id) {
         return ResponseEntity.ok(accountService.getAccountTransactions(id));
