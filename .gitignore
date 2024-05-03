@@ -1,5 +1,6 @@
 # Compiled class file
 *.class
+target/
 
 # Log file
 *.log
@@ -9,6 +10,16 @@
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+.mvn
+
+### VS Code ###
+.vscode/
 
 # Package Files #
 *.jar
