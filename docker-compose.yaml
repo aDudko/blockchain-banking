@@ -19,9 +19,9 @@ services:
     build:
       dockerfile: Dockerfile
     container_name: server
-    image: banking
+    image: blockchain-banking
     ports:
-      - "8080:8080"
+      - "8082:8082"
     depends_on:
       - db
 
