@@ -1,4 +1,4 @@
-package net.dudko.project.model.dto;
+package net.dudko.project.core;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -14,7 +14,7 @@ import static java.nio.charset.StandardCharsets.UTF_8;
 @Data
 @Builder
 @AllArgsConstructor
-public class BlockDto {
+public class Block {
 
     private Long id;
 
@@ -28,7 +28,7 @@ public class BlockDto {
 
     private int nonce;
 
-    public BlockDto(String data, String prevHash, long timeCreate) {
+    public Block(String data, String prevHash, long timeCreate) {
         this.data = data;
         this.prevHash = prevHash;
         this.timeCreate = timeCreate;

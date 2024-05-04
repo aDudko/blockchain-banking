@@ -3,7 +3,7 @@ package net.dudko.project.service.impl;
 import lombok.AllArgsConstructor;
 import net.dudko.project.domain.mapper.BlockMapper;
 import net.dudko.project.domain.repository.BlockRepository;
-import net.dudko.project.model.dto.BlockDto;
+import net.dudko.project.core.Block;
 import net.dudko.project.model.exceprion.BlockchainException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -171,12 +171,12 @@ public class AccountServiceImpl implements AccountService {
     }
 
     private boolean createBlock(String data) {
-        List<BlockDto> blockchain = blockRepository.findAll().stream().map(BlockMapper::mapToBlockDto).toList();
+        List<Block> blockchain = blockRepository.findAll().stream().map(BlockMapper::mapToBlockDto).toList();
         if (blockchain.isEmpty()) {
-            BlockDto genesisBlock = new BlockDto("The is the Genesis Block.", "0", new Date().getTime());
+            Block genesisBlock = new Block("The is the Genesis Block.", "0", new Date().getTime());
             genesisBlock.mineBlock(PREFIX);
             blockRepository.save(BlockMapper.mapToBlock(genesisBlock));
-            BlockDto firstBlock = new BlockDto("The is the First Block.", genesisBlock.getHash(), new Date().getTime());
+            Block firstBlock = new Block("The is the First Block.", genesisBlock.getHash(), new Date().getTime());
             firstBlock.mineBlock(PREFIX);
             blockRepository.save(BlockMapper.mapToBlock(firstBlock));
         }
@@ -184,7 +184,7 @@ public class AccountServiceImpl implements AccountService {
         boolean flag = true;
 
         var prevHash = blockRepository.findTopByOrderByIdDesc().getHash();
-        BlockDto block = new BlockDto(data, prevHash, new Date().getTime());
+        Block block = new Block(data, prevHash, new Date().getTime());
         block.mineBlock(PREFIX);
 
         blockchain = blockRepository.findAll().stream().map(BlockMapper::mapToBlockDto).toList();

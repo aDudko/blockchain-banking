@@ -1,12 +1,11 @@
 package net.dudko.project.domain.mapper;
 
-import net.dudko.project.domain.entity.blockchain.Block;
-import net.dudko.project.model.dto.BlockDto;
+import net.dudko.project.core.Block;
 
 public class BlockMapper {
 
-    public static Block mapToBlock(BlockDto blockDto) {
-        return Block.builder()
+    public static net.dudko.project.domain.entity.blockchain.Block mapToBlock(Block blockDto) {
+        return net.dudko.project.domain.entity.blockchain.Block.builder()
                 .id(blockDto.getId())
                 .hash(blockDto.getHash())
                 .prevHash(blockDto.getPrevHash())
@@ -16,8 +15,8 @@ public class BlockMapper {
                 .build();
     }
 
-    public static BlockDto mapToBlockDto(Block block) {
-        return BlockDto.builder()
+    public static Block mapToBlockDto(net.dudko.project.domain.entity.blockchain.Block block) {
+        return Block.builder()
                 .id(block.getId())
                 .hash(block.getHash())
                 .prevHash(block.getPrevHash())
