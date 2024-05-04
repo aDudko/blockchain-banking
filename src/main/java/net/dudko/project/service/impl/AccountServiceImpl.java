@@ -1,10 +1,10 @@
 package net.dudko.project.service.impl;
 
+import lombok.AllArgsConstructor;
 import net.dudko.project.domain.mapper.BlockMapper;
 import net.dudko.project.domain.repository.BlockRepository;
 import net.dudko.project.model.dto.BlockDto;
 import net.dudko.project.model.exceprion.BlockchainException;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import net.dudko.project.domain.entity.account.Account;
@@ -27,6 +27,7 @@ import java.util.Date;
 import java.util.List;
 
 @Service
+@AllArgsConstructor
 public class AccountServiceImpl implements AccountService {
 
     private final AccountRepository accountRepository;
@@ -35,15 +36,6 @@ public class AccountServiceImpl implements AccountService {
 
     private static final int PREFIX = 4;
     private static final String PREFIX_STRING = new String(new char[PREFIX]).replace('\0', '0');
-
-    @Autowired
-    public AccountServiceImpl(AccountRepository accountRepository,
-                              TransactionRepository transactionRepository,
-                              BlockRepository blockRepository) {
-        this.accountRepository = accountRepository;
-        this.transactionRepository = transactionRepository;
-        this.blockRepository = blockRepository;
-    }
 
     @Override
     public AccountDto createAccount(AccountDto accountDto) {
