@@ -7,7 +7,7 @@
 
 
 <p>For a quick start, use the <code>docker-compose up</code> command in terminal
-and get URL <code>localhost:8082</code>. Also uou can see API Documentation in URL: 
+and get URL <code>localhost:8082</code>. Also you can see API Documentation in URL: 
 <code>localhost:8082/swagger-ui/index.html</code></p>
 
 <p>In file <code>blockchain-banking.postman_collection.json</code>code you can see 
