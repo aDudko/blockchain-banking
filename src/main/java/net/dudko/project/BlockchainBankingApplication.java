@@ -10,7 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @OpenAPIDefinition(
         info = @Info(
                 title = "Blockchain Banking",
-                description = "Expense Tracker REST API Documentation",
+                description = "Blockchain Banking REST API Documentation",
                 version = "v1.0",
                 contact = @Contact(
                         name = "Dudko Anatol",
